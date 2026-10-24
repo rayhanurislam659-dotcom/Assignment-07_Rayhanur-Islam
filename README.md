@@ -1,155 +1,239 @@
-# 🛒 বাজার দর (BazarDor)
+# Bazar Dor (BazarDor)
 
-বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের আজকের বাজারদর এক নজরে দেখার জন্য একটি রেসপন্সিভ বাংলা ওয়েব অ্যাপ। চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম-দুধ ও মসলার দাম, দৈনিক বাড়া-কমা, এবং বাজারভিত্তিক তুলনা—সব এক জায়গায়।
+Bazar Dor is a responsive grocery-price web application for everyday essentials in Bangladesh. It brings today's prices for rice, lentils, oil, vegetables, fish, meat, dairy, and spices together with daily price movements and a market-by-market comparison.
 
-ডেটা আসে [Programming Hero BazarDor API](https://openapi.programming-hero.com/api/bazardor) থেকে, যা এই প্রজেক্টে `https://api.api-store.workers.dev/api/bazardor`-এর মাধ্যমে ব্যবহার করা হয়েছে।
+The user-facing interface is written in Bengali, as required by the assignment, and prices are shown in Bengali numerals. This README is in English.
 
----
-
-## ✨ ফিচার
-
-1. **লাইভ প্রাইস টিকার** — নেভবারের নিচে চালু থাকা অসীম স্ক্রলিং টিকারে প্রতিটি পণ্যের ইমোজি, নাম, আজকের দাম, একক ও ▲/▼ শতাংশ দেখায়।
-2. **আজ দাম বেড়েছে / কমেছে** — গতকালের তুলনায় সবচেয়ে বেশি বাড়া ৬টি এবং কমা ৬টি পণ্য আলাদা প্যানেলে, র‍্যাংক ও পরিবর্তনের ব্যাজসহ।
-3. **সব পণ্যের রেসপন্সিভ গ্রিড** — মোবাইল, ট্যাব ও ডেস্কটপে মানানসই কার্ড গ্রিড; প্রতিটি কার্ডে বাংলা সংখ্যায় দাম এবং সবুজ ▲ / লাল ▼ / ধূসর — পরিবর্তনের ব্যাজ।
-4. **সুরক্ষিত প্রোডাক্ট ডিটেইল** — `/product/[slug]` শুধু সাইন-ইন করা ব্যবহারকারীর জন্য; সর্বনিম্ন, সর্বোচ্চ ও গড় দাম এবং বিভাগ অনুযায়ী প্রতিটি বাজারের দামের রেঞ্জ বার-ভিজুয়ালাইজেশনসহ।
-5. **ক্যাটাগরি ব্রাউজিং ও নিউমেরিক সর্টিং** — ডিফল্ট / দাম কম থেকে বেশি / দাম বেশি থেকে কম। দাম সংখ্যা হিসেবে সর্ট হয়, বাংলা স্ট্রিং হিসেবে নয়। লোডিং স্কেলেটন, এরর রিট্রাই এবং ৪০৪-স্টাইল খালি অবস্থা রয়েছে।
-6. **BetterAuth অথেন্টিকেশন** — ইমেইল/পাসওয়ার্ড সাইন আপ ও সাইন ইন, ঐচ্ছিক Google ও GitHub লগইন, টোস্ট নোটিফিকেশন, ভ্যালিডেশন, প্যাসওয়ার্ড শো/হাইড এবং সেশন-ভিত্তিক সুরক্ষিত রুট।
-7. **প্রোফাইল ও প্রোফাইল আপডেট** — `/profile`-এ অ্যাকাউন্টের সারসংক্ষেপ, সাইন আউট; `/profile/update`-এ আলাদা রুটে নাম পরিবর্তন করে `authClient.updateUser` দিয়ে সংরক্ষণ।
-8. **বাংলা টাইপোগ্রাফি ও সম্পূর্ণ স্টেটস** — বাংলা সংখ্যা, তারিখ (Asia/Dhaka), Anek Bangla + Hind Siliguri ফন্ট, স্কেলেটন, এরর বাউন্ডারি, গ্লোবাল ৪০৪, সাইন-ইন রিডাইরেক্ট টোস্ট এবং মোবাইল-ফার্স্ট লেআউট।
+Product data is provided by the [Programming Hero BazarDor API](https://openapi.programming-hero.com/api/bazardor), accessed through `https://api.api-store.workers.dev/api/bazardor`.
 
 ---
 
-## 🧰 টেক স্ট্যাক
+## Features
+
+1. **Live price ticker** — An infinite-scrolling ticker below the navbar shows each product's emoji, name, today's price, unit, and up/down percentage.
+2. **Daily risers and fallers** — Separate panels show the top six products that became more expensive and the top six that became cheaper compared with yesterday, including rank and change badges.
+3. **Responsive product grid** — A mobile-first grid of product cards with Bengali names, units, prices, and green up / red down / gray flat change badges.
+4. **Protected product details** — `/product/[slug]` requires sign-in and displays a market summary, today's price, minimum/maximum/average prices, price history, and market-by-market ranges grouped by division.
+5. **Category browsing with numeric sorting** — Sort products by default order, price low-to-high, or price high-to-low. Sorting compares actual numbers, not Bengali strings. Skeleton, retry, and 404-style empty states are included.
+6. **Authentication with BetterAuth** — Email/password sign-up and sign-in, optional Google and GitHub login, validation, password visibility toggle, toast notifications, and cookie-based sessions.
+7. **Profile management** — `/profile` shows account details and a sign-out action. `/profile/update` is a separate route that updates the user's name with `authClient.updateUser`.
+8. **Complete UI states** — Loading skeletons, error boundaries, global 404 page, protected-route redirect notices, Bengali dates, and accessible responsive layouts.
+
+---
+
+## Tech Stack
 
 - **Framework:** Next.js 16 (App Router, Turbopack), React 19, TypeScript
-- **Styling:** Tailwind CSS v4, custom design tokens, Lucide icons
-- **Auth:** BetterAuth 1.7 (email/password + optional Google/GitHub), session cookies
-- **Database:** LibSQL (লোকাল ফাইল বা Turso) + Drizzle ORM adapter
+- **Styling:** Tailwind CSS v4 with custom design tokens; Lucide icons
+- **Authentication:** BetterAuth 1.7 (email/password, optional Google/GitHub)
+- **Database:** LibSQL (local file or Turso) with Drizzle ORM
 - **Notifications:** react-hot-toast
-- **API:** BazarDor public API, Next.js Route Handlers দিয়ে internal proxy
-- **Fonts:** `next/font/google` — Anek Bangla ও Hind Siliguri
+- **Data source:** BazarDor public API with internal Next.js route-handler proxies
+- **Fonts:** Next.js Google Fonts — Anek Bangla and Hind Siliguri
 
 ---
 
-## 📁 গুরুত্বপূর্ণ রুট
+## Routes
 
-| রুট | বর্ণনা | অ্যাক্সেস |
+| Route | Description | Access |
 | --- | --- | --- |
-| `/` | হিরো, দাম বাড়া/কমা, সব পণ্য | পাবলিক |
-| `/category/[slug]` | ক্যাটাগরি পণ্য, সর্টিং | পাবলিক |
-| `/product/[slug]` | বিস্তারিত দাম ও বাজার তুলনা | **প্রোটেক্টেড** |
-| `/signin`, `/signup` | BetterAuth লগইন/রেজিস্ট্রেশন | পাবলিক |
-| `/profile`, `/profile/update` | প্রোফাইল ও নাম আপডেট | **প্রোটেক্টেড** |
-| `/api/products`, `/api/categories` | ক্যাটাগরি/পণ্য proxy API | পাবলিক |
-| `/api/auth/[...all]` | BetterAuth handler | — |
+| `/` | Hero, top movers, all products | Public |
+| `/category/[slug]` | Category products and price sorting | Public |
+| `/product/[slug]` | Product details and market comparison | Protected |
+| `/signin`, `/signup` | Authentication pages | Public |
+| `/profile`, `/profile/update` | Profile overview and name update | Protected |
+| `/api/products`, `/api/categories` | Cached product/category proxies | Public |
+| `/api/auth/[...all]` | BetterAuth API handler | — |
 
-প্রোটেক্টেড রুটে লগইন না থাকলে `/signin?redirect=...&reason=protected`-এ পাঠানো হয় এবং টোস্টে জানানো হয়।
+Unauthenticated users who open a protected route are redirected to `/signin?redirect=...&reason=protected` and shown a toast message.
 
 ---
 
-## 🚀 লোকাল সেটআপ
+## Getting Started
 
-**প্রয়োজন:** Node.js 20.9+ (পরীক্ষিত Node 24), npm।
+### Prerequisites
+
+- Node.js 20.9 or newer (tested with Node 24)
+- npm
+
+### Installation
 
 ```bash
 npm install
+```
+
+Create your local environment file:
+
+```bash
 cp .env.example .env
 ```
 
-`.env` ফাইলে একটি শক্ত সিক্রেট বসান:
+On Windows PowerShell, use:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Generate a long random secret and put it in `BETTER_AUTH_SECRET`:
 
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-লোকাল ডেভেলপমেন্টের জন্য `.env`-এ ডিফল্ট মানগুলোই যথেষ্ট:
+For local development, the default values are sufficient:
 
 ```env
-BETTER_AUTH_SECRET=<generated-secret>
+BETTER_AUTH_SECRET=<your-generated-secret>
 BETTER_AUTH_URL=http://localhost:3000
 DATABASE_URL=file:./.data/bazardor.db
 DATABASE_AUTH_TOKEN=
 BAZARDOR_API_URL=https://api.api-store.workers.dev/api/bazardor
 ```
 
-এরপর:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-- অ্যাপ: <http://localhost:3000>
-- `predev` স্ক্রিপ্ট LibSQL ডাটাবেস ও BetterAuth টেবিল স্বয়ংক্রিয়ভাবে তৈরি করে (`scripts/db-init.mjs`)।
-- লোকাল auth ডেটা রিসেট করতে চাইলে `.data/bazardor.db` ফাইলটি মুছে আবার `npm run dev` দিন।
+Open [http://localhost:3000](http://localhost:3000).
 
-> Windows PowerShell-এ কপি করতে: `Copy-Item .env.example .env`
+The `predev` script automatically creates the local LibSQL database and the BetterAuth tables through `scripts/db-init.mjs`.
 
-### Google / GitHub লগইন (ঐচ্ছিক)
+To reset local authentication data, stop the server, delete `.data/bazardor.db`, and run `npm run dev` again.
 
-`.env`-এ ক্রেডেনশিয়াল দিলে সোশ্যাল বাটনগুলো সক্রিয় হবে; না দিলে ইমেইল/পাসওয়ার্ড কাজ করবে এবং সোশ্যাল বাটনে ক্লিক করলে বাংলা টোস্ট দেখাবে।
+### Optional social login
 
-- Google Cloud Console → OAuth client → Authorized redirect URI:
-  `http://localhost:3000/api/auth/callback/google`
-- GitHub → Developer settings → OAuth App → Authorization callback URL:
-  `http://localhost:3000/api/auth/callback/github`
+Google and GitHub buttons are always visible. To make them work, add OAuth credentials to `.env`:
 
-ডিপ্লয়ের পর একই URI-তে নিজের ডোমেইন ব্যবহার করুন।
+```env
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+```
+
+Authorized callback URLs for local development:
+
+- Google: `http://localhost:3000/api/auth/callback/google`
+- GitHub: `http://localhost:3000/api/auth/callback/github`
+
+If these values are missing, email/password authentication still works and clicking a social button shows a Bengali toast explaining that the provider is not configured.
 
 ---
 
-## 📜 স্ক্রিপ্ট
+## Environment Variables
+
+| Variable | Required | Description |
+| --- | --- | --- |
+| `BETTER_AUTH_SECRET` | Yes | Long random string used to sign sessions |
+| `BETTER_AUTH_URL` | Yes | Public base URL of the app (`http://localhost:3000` locally) |
+| `DATABASE_URL` | Yes | Local `file:` path or production `libsql://` URL |
+| `DATABASE_AUTH_TOKEN` | Production | Turso auth token; leave empty for a local file |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | No | Enables Google sign-in |
+| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | No | Enables GitHub sign-in |
+| `BAZARDOR_API_URL` | No | Overrides the product API base URL |
+
+Never commit `.env`. The repository includes only `.env.example`.
+
+---
+
+## Available Scripts
 
 ```bash
-npm run dev      # ডেভেলপমেন্ট সার্ভার (+ DB init)
-npm run build    # প্রোডাকশন বিল্ড (+ DB init)
-npm start        # প্রোডাকশন সার্ভার
-npm run lint     # ESLint
-npm run db:init  # LibSQL টেবিল তৈরি/আপডেট
+npm run dev      # Start development server (also initializes the auth DB)
+npm run build    # Create a production build (also initializes the auth DB)
+npm start        # Start the production server
+npm run lint     # Run ESLint
+npm run db:init  # Create or update LibSQL auth tables
 ```
 
 ---
 
-## ☁️ Vercel-এ ডিপ্লয় (প্রস্তাবিত)
+## Production Build Locally
 
-Vercel-এর ফাইলসিস্টেম স্থায়ী নয়, তাই প্রোডাকশনে **Turso** (LibSQL) ব্যবহার করুন।
+```bash
+npm run lint
+npm run build
+npm start
+```
 
-1. **Turso ডাটাবেস তৈরি করুন** (Turso CLI):
+Then open [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Deploying to Vercel with Turso
+
+Vercel's filesystem is not persistent, so a local SQLite file is not suitable for production authentication. Use Turso (hosted LibSQL).
+
+1. **Create a Turso database:**
+
    ```bash
    turso db create bazardor
    turso db show bazardor --url
    turso db tokens create bazardor
    ```
-2. **Vercel Project → Settings → Environment Variables:**
-   - `BETTER_AUTH_SECRET` — লোকাল সিক্রেটের মতো লম্বা র‍্যান্ডম স্ট্রিং
+
+2. **Add environment variables in Vercel** (Project Settings > Environment Variables):
+
+   - `BETTER_AUTH_SECRET` — a long random secret
    - `BETTER_AUTH_URL` — `https://your-app.vercel.app`
-   - `DATABASE_URL` — `libsql://...` (Turso URL)
-   - `DATABASE_AUTH_TOKEN` — Turso token
-   - ঐচ্ছিক: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `BAZARDOR_API_URL`
-3. **Build command:** `npm run build` (ডিফল্ট)। `prebuild` স্বয়ংক্রিয়ভাবে একই স্কিমা Turso-তে তৈরি করবে।
-4. **OAuth callback (প্রোডাকশন):**
+   - `DATABASE_URL` — the `libsql://...` URL from Turso
+   - `DATABASE_AUTH_TOKEN` — the Turso token
+   - Optional: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `BAZARDOR_API_URL`
+
+3. **Build command:** `npm run build` (the default). The `prebuild` script creates the required tables in Turso automatically.
+
+4. **OAuth callback URLs for production:**
+
    - Google: `https://your-app.vercel.app/api/auth/callback/google`
    - GitHub: `https://your-app.vercel.app/api/auth/callback/github`
-5. Deploy করুন এবং সাইন আপ → সাইন ইন → প্রোটেক্টেড পেজে প্রবেশ যাচাই করুন।
 
-`.env` কখনো Git-এ কমিট করবেন না; শুধু `.env.example` কমিট হয়েছে।
-
----
-
-## 🧪 যাচাই করা হয়েছে
-
-- সাইন আপ → সাইন ইন → হোম; সেশন নেভবারে নাম দেখায়।
-- লগআউট অবস্থায় প্রোটেক্টেড পেজে গেলে সাইন-ইন পেজ + টোস্ট।
-- প্রোডাক্ট ডিটেইল, সর্বনিম্ন/সর্বোচ্চ/গড় এবং বাজারভিত্তিক ডেটা লোড হয়।
-- প্রোফাইল নাম আপডেট (`updateUser`) সফলভাবে সংরক্ষিত হয়।
-- ক্যাটাগরি দামের সর্টিং সংখ্যাগতভাবে সঠিক (যেমন ৬৬ → ৭৪ → ৯৯ → ১৪৮)।
-- ভুল ক্যাটাগরি/পণ্য ও অজানা রুটে ৪০৪ UI + হোম CTA।
-- রিফ্রেশে ডায়নামিক রুট কাজ করে; লিন্ট ও প্রোডাকশন বিল্ড পাস করেছে।
+5. Deploy and test sign-up, sign-in, a protected product page, and a hard refresh on a dynamic route.
 
 ---
 
-## 📝 নোট
+## Manual Verification Checklist
 
-- অ্যাসাইনমেন্টের নির্দেশ অনুযায়ী **ইমেইল ভেরিফিকেশন ও ফরগট পাসওয়ার্ড** ইচ্ছাকৃতভাবে রাখা হয়নি।
-- প্রোডাক্ট ডিটেইল পেজে প্রবেশের জন্য লগইন আবশ্যক।
-- পাবলিক API মাঝে মাঝে ঠান্ডা (cold) হতে পারে; ১২ সেকেন্ড টাইমআউট ও এরর রিট্রাই বাটন রাখা হয়েছে।
-- বাজারদর একটি শিক্ষামূলক প্রজেক্ট; দাম শুধু তথ্যের জন্য, কেনাকাটার আগে স্থানীয় বাজারে যাচাই করুন।
+1. **Home page:** Confirm the navbar, infinite price ticker, hero CTA that scrolls to `#সব-পণ্য`, top risers/fallers, and product grid.
+2. **Protected route:** Open `/product/sorno-machi-chal` while signed out. You should be redirected to sign-in with a notice toast.
+3. **Sign up:** Create an account at `/signup`. On success, you should be redirected to `/signin` with the email prefilled.
+4. **Sign in:** After signing in, the navbar should show your profile and the protected product page should open with min/max/average prices and market data.
+5. **Category sorting:** Open `/category/chal` and choose "price low to high". Prices should be numerically ascending, e.g. 66, 74, 99, 148.
+6. **Profile update:** Open `/profile/update`, change the name, and save. The profile page and navbar should both show the new name.
+7. **Empty and error states:** Open `/category/not-a-real-category` for the 404-style empty state, and `/unknown-route` for the global 404 page.
+8. **Responsive layout:** Use browser DevTools at 390px, 768px, and 1440px widths.
+9. **Refresh behavior:** Reload a product detail and category page directly; both should work without a client-side navigation first.
+10. **Sign out:** Sign out from the navbar or profile page and confirm that the protected routes are no longer accessible.
+
+---
+
+## Project Structure
+
+```text
+scripts/db-init.mjs              Auth database bootstrap
+public/images/                   Hero illustration
+src/app/                         Routes, layouts, API handlers, states
+src/components/auth/             Sign-in/sign-up forms and social buttons
+src/components/category/         Category browser and sorting
+src/components/home/             Hero, movers, all-products sections
+src/components/layout/           Navbar, ticker, footer, toast provider
+src/components/products/         Product cards and change badges
+src/components/profile/          Profile update and sign-out actions
+src/components/ui/               Shared buttons, skeletons, states
+src/lib/api.ts                   Product/category API client
+src/lib/auth.ts                  BetterAuth server configuration
+src/lib/auth-client.ts           BetterAuth React client
+src/lib/bengali.ts               Bengali digits, dates, prices, market stats
+src/lib/db.ts                    LibSQL and Drizzle setup
+src/lib/schema.ts                BetterAuth database schema
+```
+
+---
+
+## Notes
+
+- Email verification and forgot-password flows are intentionally not implemented, in line with the assignment requirements.
+- Product details require authentication.
+- The public API can occasionally be cold; the app uses a 12-second timeout, cached requests, and visible retry actions.
+- Bazar Dor is an educational project. Prices are informational only; verify them at your local market before making purchasing decisions.
