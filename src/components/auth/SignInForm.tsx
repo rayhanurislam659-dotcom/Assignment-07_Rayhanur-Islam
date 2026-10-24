@@ -146,7 +146,7 @@ export function SignInForm({
         </div>
       ) : null}
 
-      <form onSubmit={handleSubmit} noValidate className="space-y-4">
+      <form method="post" onSubmit={handleSubmit} noValidate className="space-y-4">
         <AuthField
           id="signin-email"
           label="ইমেইল ঠিকানা"

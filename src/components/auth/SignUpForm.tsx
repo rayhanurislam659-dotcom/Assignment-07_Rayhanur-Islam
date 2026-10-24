@@ -139,7 +139,7 @@ export function SignUpForm({
         </div>
       ) : null}
 
-      <form onSubmit={handleSubmit} noValidate className="space-y-4">
+      <form method="post" onSubmit={handleSubmit} noValidate className="space-y-4">
         <AuthField
           id="signup-name"
           label="আপনার নাম"
