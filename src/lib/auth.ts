@@ -25,9 +25,17 @@ function devOrigins() {
   return [...hosts].map((host) => `http://${host}:*`);
 }
 
+const vercelBaseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : undefined;
+
+const baseURL = process.env.BETTER_AUTH_URL || vercelBaseUrl;
+
 const trustedOrigins = [
   ...devOrigins(),
-  process.env.BETTER_AUTH_URL,
+  baseURL,
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
   process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
@@ -36,7 +44,7 @@ const trustedOrigins = [
 
 export const auth = betterAuth({
   appName: "বাজার দর",
-  baseURL: process.env.BETTER_AUTH_URL || undefined,
+  baseURL,
   secret: process.env.BETTER_AUTH_SECRET,
   trustedOrigins,
   database: drizzleAdapter(db, {

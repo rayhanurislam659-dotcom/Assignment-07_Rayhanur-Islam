@@ -134,6 +134,8 @@ If these values are missing, email/password authentication still works and click
 | `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | No | Enables GitHub sign-in |
 | `BAZARDOR_API_URL` | No | Overrides the product API base URL |
 
+The app also accepts `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN`, which are useful when the Turso Vercel integration provides those names instead of `DATABASE_URL` and `DATABASE_AUTH_TOKEN`.
+
 Never commit `.env`. The repository includes only `.env.example`.
 
 ---
@@ -190,6 +192,17 @@ Vercel's filesystem is not persistent, so a local SQLite file is not suitable fo
    - GitHub: `https://your-app.vercel.app/api/auth/callback/github`
 
 5. Deploy and test sign-up, sign-in, a protected product page, and a hard refresh on a dynamic route.
+
+### Sign-in returns a 500 error on Vercel
+
+Check the following in **Project Settings > Environment Variables**, then redeploy:
+
+- `BETTER_AUTH_SECRET` is missing or empty. BetterAuth refuses to start in production without it.
+- `BETTER_AUTH_URL` is not the live origin. Use the exact deployment URL, for example `https://project-bazardor-kappa.vercel.app`.
+- `DATABASE_URL` points to a local file such as `file:./.data/bazardor.db`. On Vercel, use the Turso `libsql://` URL and set `DATABASE_AUTH_TOKEN`.
+- Variables were added after the last deployment. Environment changes only apply to a new deployment.
+
+After redeploying, open `/api/auth/ok`. It should return `{"ok":true}`. If that route still returns 500, the auth secret or base URL is invalid; if it returns 200 but sign-up fails, the Turso database is not configured or its tables were not created during the build.
 
 ---
 

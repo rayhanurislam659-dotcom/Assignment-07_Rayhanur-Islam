@@ -5,7 +5,10 @@ import { createClient } from "@libsql/client";
 const isVercel = Boolean(process.env.VERCEL);
 const databaseUrl =
   process.env.DATABASE_URL ||
+  process.env.TURSO_DATABASE_URL ||
   (isVercel ? "file:/tmp/bazardor.db" : "file:./.data/bazardor.db");
+const databaseAuthToken =
+  process.env.DATABASE_AUTH_TOKEN || process.env.TURSO_AUTH_TOKEN;
 
 if (databaseUrl.startsWith("file:")) {
   const filePath = databaseUrl.slice("file:".length);
@@ -14,7 +17,7 @@ if (databaseUrl.startsWith("file:")) {
 
 const client = createClient({
   url: databaseUrl,
-  authToken: process.env.DATABASE_AUTH_TOKEN || undefined,
+  authToken: databaseAuthToken || undefined,
 });
 
 const statements = [
