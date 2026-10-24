@@ -11,7 +11,7 @@ export const FALLBACK_CATEGORIES: Category[] = [
   { id: "mosla", slug: "mosla", nameBn: "মসলা", icon: "🌶️" },
 ];
 
-export const SITE_NAME = "বাজার দর";
+export const SITE_NAME = "BazarDor";
 export const SITE_TAGLINE = "প্রয়োজনীয় পণ্যের দাম এক নজরে।";
 export const SITE_DESCRIPTION =
   "চাল, ডাল, সবজি, মাছ, মাংস ও নিত্যপ্রয়োজনীয় পণ্যের আজকের বাজারদর এক জায়গায়।";

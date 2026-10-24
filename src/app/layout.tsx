@@ -33,13 +33,13 @@ export const metadata: Metadata = {
   keywords: [
     "বাজার দর",
     "আজকের বাজারদর",
-    "Bazar Dor",
+    "BazarDor",
     "Bangladesh market price",
     "চালের দাম",
     "সবজির দাম",
     "মাছের দাম",
   ],
-  authors: [{ name: "বাজার দর" }],
+  authors: [{ name: "BazarDor" }],
   openGraph: {
     title: `${SITE_NAME} — প্রয়োজনীয় পণ্যের দাম এক নজরে`,
     description: SITE_DESCRIPTION,

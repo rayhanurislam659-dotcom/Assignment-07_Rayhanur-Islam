@@ -1,6 +1,6 @@
-# Bazar Dor (BazarDor)
+# BazarDor (বাজার দর)
 
-Bazar Dor is a responsive grocery-price web application for everyday essentials in Bangladesh. It brings today's prices for rice, lentils, oil, vegetables, fish, meat, dairy, and spices together with daily price movements and a market-by-market comparison.
+BazarDor is a responsive grocery-price web application for everyday essentials in Bangladesh. It brings today's prices for rice, lentils, oil, vegetables, fish, meat, dairy, and spices together with daily price movements and a market-by-market comparison.
 
 The user-facing interface is written in Bengali, as required by the assignment, and prices are shown in Bengali numerals. This README is in English.
 
@@ -236,4 +236,4 @@ src/lib/schema.ts                BetterAuth database schema
 - Email verification and forgot-password flows are intentionally not implemented, in line with the assignment requirements.
 - Product details require authentication.
 - The public API can occasionally be cold; the app uses a 12-second timeout, cached requests, and visible retry actions.
-- Bazar Dor is an educational project. Prices are informational only; verify them at your local market before making purchasing decisions.
+- BazarDor is an educational project. Prices are informational only; verify them at your local market before making purchasing decisions.
